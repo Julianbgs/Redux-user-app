@@ -18,7 +18,6 @@ const data = [
 ];
 
 const store = createStore(handleAddUser, data);
-console.log('store', store)
 
 ReactDOM.render(
   <Provider store={store}>

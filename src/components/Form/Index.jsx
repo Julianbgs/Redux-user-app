@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { addUser } from '../../actions/actions';
 import { connect } from 'react-redux';
+import ImageUploader from 'react-images-upload';
 
 import './Form.sass';
 
@@ -10,7 +11,14 @@ class FormUsers extends Component {
     super(props);
     this.nameRef = React.createRef();
     this.ageRef = React.createRef();
+    this.state = { pictures: [] };
   }
+
+  onDrop = (picture) => {
+    this.setState({
+      pictures: this.state.pictures.concat(picture),
+    });
+  };
 
   handleUserAdd = (e) => {
     e.preventDefault();
@@ -26,6 +34,13 @@ class FormUsers extends Component {
         <form className="Form__Wrap">
           <input type="text" className="Form__Input" ref={this.nameRef} />
           <input type="text" className="Form__Input" ref={this.ageRef} />
+          <ImageUploader
+            withIcon={true}
+            buttonText='Choose images'
+            onChange={this.onDrop}
+            imgExtension={['.jpg', '.gif', '.png']}
+            maxFileSize={5242880}
+          />
           <input type="submit" className="Form__Submit" />
         </form>
       </div>

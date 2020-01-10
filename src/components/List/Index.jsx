@@ -6,18 +6,19 @@ import './List.sass';
 
 function mapStateToProps(state) {
   return {
-    data: state
+    users: state.users.list
   };
 
 }
 
 class List extends Component {
   render() {
+    const { users } = this.props;
     return (
       <div className="List">
         {
-          this.props.data.map(function (item, index) {
-            return <Elem dataList={item} key={item.id}/>
+          users && Array.isArray(users) && users.map(function (user) {
+            return <Elem dataList={user} key={user.id}/>
           })
         }
       </div>

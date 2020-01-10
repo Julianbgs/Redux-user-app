@@ -9,31 +9,54 @@ class FormUsers extends Component {
 
   constructor(props) {
     super(props);
-    this.nameRef = React.createRef();
-    this.ageRef = React.createRef();
-    this.state = { pictures: [] };
+    this.state = {
+      name: '',
+      age: '',
+      picture: '',
+    }
   }
 
-  onDrop = (picture) => {
-    this.setState({
-      pictures: this.state.pictures.concat(picture),
-    });
+  onDrop = (files) => {
+    console.log(files);
+    if (files && files.length) {
+      const file = files[0]
+      const fr = new FileReader();
+      fr.onload = (e) => {
+        this.setState({
+          picture: e.target.result
+        })
+      };
+      fr.readAsDataURL(file)
+    }
+    // this.setState({
+    //   picture: picture
+    // })
   };
 
   handleUserAdd = (e) => {
     e.preventDefault();
-    const name = this.nameRef.current.value;
-    const age = this.ageRef.current.value;
-    const id  = Math.random() * 10;
-    this.props.addUser(name, age, id);
+    const { name, age, picture } = this.state;
+
+    if (name && age && picture) {
+      const { addUser } = this.props;
+      addUser(name, age, picture);
+      this.setState({
+        name: '',
+        age: '',
+        picture: '',
+      })
+    } else {
+      alert('заполните поля')
+    }
   };
 
   render() {
+    const { name, age } = this.state;
     return (
-      <div className="Form" onSubmit={this.handleUserAdd}>
-        <form className="Form__Wrap">
-          <input type="text" className="Form__Input" ref={this.nameRef} />
-          <input type="text" className="Form__Input" ref={this.ageRef} />
+      <div className="Form">
+        <form className="Form__Wrap" onSubmit={this.handleUserAdd}>
+          <input type="text" className="Form__Input" value={name} onChange={(e) => { this.setState({ name: e.target.value }) }} />
+          <input type="text" className="Form__Input" value={age} onChange={(e) => { this.setState({ age: e.target.value }) }} />
           <ImageUploader
             withIcon={true}
             buttonText='Choose images'

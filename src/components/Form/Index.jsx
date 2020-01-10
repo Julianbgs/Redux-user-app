@@ -17,9 +17,8 @@ class FormUsers extends Component {
   }
 
   onDrop = (files) => {
-    console.log(files);
     if (files && files.length) {
-      const file = files[0]
+      const file = files[0];
       const fr = new FileReader();
       fr.onload = (e) => {
         this.setState({
@@ -55,8 +54,9 @@ class FormUsers extends Component {
     return (
       <div className="Form">
         <form className="Form__Wrap" onSubmit={this.handleUserAdd}>
-          <input type="text" className="Form__Input" value={name} onChange={(e) => { this.setState({ name: e.target.value }) }} />
-          <input type="text" className="Form__Input" value={age} onChange={(e) => { this.setState({ age: e.target.value }) }} />
+          <h3 className="Form__Title"> Create User </h3>
+          <input type="text" className="Form__Input" placeholder="User name" value={name} onChange={(e) => { this.setState({ name: e.target.value }) }} />
+          <input type="text" className="Form__Input" placeholder="User age" value={age} onChange={(e) => { this.setState({ age: e.target.value }) }} />
           <ImageUploader
             withIcon={true}
             buttonText='Choose images'

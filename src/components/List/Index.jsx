@@ -16,6 +16,7 @@ class List extends Component {
     const { users } = this.props;
     return (
       <div className="List">
+        <h3 className="List__Title"> List of Users</h3>
         {
           users && Array.isArray(users) && users.map(function (user) {
             return <Elem dataList={user} key={user.id}/>

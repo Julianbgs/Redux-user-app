@@ -1,4 +1,4 @@
-import { ADD_USER } from "../actions/actions";
+import { ADD_USER, CHANGE_USER } from "../actions/actions";
 
 import img1 from '../assets/images/ava1.jpg';
 import img2 from '../assets/images/ava2.jpg';
@@ -50,8 +50,8 @@ const initialState = {
       picture: img3,
     },
     {
-      id: 4,
-      name: 'user4',
+      id: 8,
+      name: 'user8',
       age: 51,
       picture: img4,
     },
@@ -71,6 +71,18 @@ export function reducer(state = initialState, action) {
             id: state.list.reduce((acc, curr) => Math.max(acc, curr.id), 0) + 1
           }
         ]
+      };
+    case CHANGE_USER:
+      const userIndex = state.list.findIndex(item => item.id === action.payload.id);
+      let stateList = [...state.list];
+      const newUser = {
+        ...state.list[userIndex],
+        ...action.payload
+      };
+      stateList[userIndex] = {...newUser};
+      return {
+        ...state,
+        list: stateList,
       };
     default:
       return state

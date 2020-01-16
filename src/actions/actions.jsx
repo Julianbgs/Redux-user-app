@@ -1,5 +1,5 @@
 export const ADD_USER = 'ADD_USER';
-export const ADD_IMAGE = 'ADD_IMAGE';
+export const CHANGE_USER = 'CHANGE_USER';
 
 export function addUser(name, age, picture) {
   return {
@@ -8,6 +8,17 @@ export function addUser(name, age, picture) {
       name,
       age,
       picture,
+    }
+  }
+}
+export function changeUser( id,name, age, picture) {
+  return {
+    type: CHANGE_USER,
+    payload: {
+      id,
+      name,
+      // age,
+      // picture
     }
   }
 }

@@ -1,6 +1,7 @@
 .Elem
   display: flex
   justify-content: space-between
+  align-items: center
   width: 100%
   box-sizing: border-box
   padding: 10px 20px
@@ -27,3 +28,53 @@
 
 .Elem__Name, .Elem__Age
     color: #ffffff
+
+.Elem__Editor
+  display: flex
+
+.Elem__Edit, .Elem__Agree, .Elem__EditDescr
+  width: 25px
+  height: 25px
+
+  img
+    width: 100%
+    height: 100%
+
+.Elem__Edit
+  margin-right: 5px
+
+.Elem__EditName
+  width: 100px
+  height: 20px
+  margin-right: 10px
+
+
+.Elem__EditAge
+  width: 50px
+  height: 20px
+
+.Elem__EditName, .Elem__EditAge
+  background-color: rgba(255, 255, 255, 0.5)
+  border: none
+  color: #ffffff
+  padding-left: 8px
+
+.Elem__EditAvatar
+  position: absolute
+  top: 0
+  left: 0
+  bottom: 0
+  width: 100%
+  opacity: 0
+
+.Elem__EditDescr
+  position: absolute
+  top: 0
+  left: 0
+  bottom: 0
+
+.Elem__EditLabel
+  position: relative
+  display: inline-block
+  width: 100px
+  height: 25px

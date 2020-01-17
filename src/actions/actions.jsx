@@ -17,8 +17,8 @@ export function changeUser( id,name, age, picture) {
     payload: {
       id,
       name,
-      // age,
-      // picture
+      age,
+      picture
     }
   }
 }

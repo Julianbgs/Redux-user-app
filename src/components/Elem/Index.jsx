@@ -13,9 +13,9 @@ class Elem extends Component {
     super(props);
     this.state = {
       isVisible: false,
-      name: '',
-      age: '',
-      picture: '',
+      name: this.props.dataList.name,
+      age: this.props.dataList.age,
+      picture: this.props.dataList.picture,
     }
   }
 
